@@ -26,12 +26,7 @@ router.post("/", async (req, res) => {
     //getting the details of the user having the email is password
     let user = await User.findOne({ email });
     if (!user) return res.status(400).send("Invalid email or password");
-
-    const token = user.generateAuthToken();
-    //sending the generated token
-    res.send(token);
-
-
+    res.send(user);
 
   } catch (e) {
     res.send(e);
